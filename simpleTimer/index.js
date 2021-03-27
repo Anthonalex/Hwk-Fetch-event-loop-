@@ -7,12 +7,16 @@ const modal = document.querySelector(".modal");
 
 var timer;
 
+function attributeSetter(boolean) {
+  minDisplay.setAttribute("disabled", boolean);
+  secDisplay.setAttribute("disabled", boolean);
+}
+
 const startTimer = (duration, minDisplay, secDisplay) => {
   --duration;
   var min, sec;
-
-  minDisplay.setAttribute("disabled", true);
-  secDisplay.setAttribute("disabled", true);
+  
+  attributeSetter(true);
 
   startBtn.textContent = "PAUSE";
 
@@ -56,7 +60,5 @@ finishText.addEventListener("click", () => {
 });
 
 resetBtn.addEventListener("click", () => {
-  pauseTimer();
-  minDisplay.value = "1";
-  secDisplay.value = "0";
+  window.location.reload();
 });
