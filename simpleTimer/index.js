@@ -5,7 +5,7 @@ const resetBtn = document.querySelector(".reset");
 const finishText = document.querySelector(".finish-text");
 const modal = document.querySelector(".modal");
 
-var timer;
+let timer;
 
 function attributeSetter(boolean) {
   minDisplay.setAttribute("disabled", boolean);
@@ -14,8 +14,8 @@ function attributeSetter(boolean) {
 
 const startTimer = (duration, minDisplay, secDisplay) => {
   --duration;
-  var min, sec;
-  
+  let min, sec;
+
   attributeSetter(true);
 
   startBtn.textContent = "PAUSE";
