@@ -41,18 +41,14 @@ const pauseTimer = () => {
   startBtn.textContent = "START";
 };
 
-let count = 0;
-
 startBtn.addEventListener("click", () => {
-  if (count % 2 === 0) {
+  if (startBtn.textContent === "START") {
     const duration = Number(minDisplay.value) * 60 + Number(secDisplay.value);
 
     startTimer(duration, minDisplay, secDisplay);
   } else {
     pauseTimer();
   }
-
-  count++;
 });
 
 finishText.addEventListener("click", () => {
@@ -60,5 +56,9 @@ finishText.addEventListener("click", () => {
 });
 
 resetBtn.addEventListener("click", () => {
-  window.location.reload();
+  pauseTimer();
+  minDisplay.value = 1;
+  secDisplay.value = 0;
+  minDisplay.removeAttribute("disabled");
+  secDisplay.removeAttribute("disabled");
 });
