@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dog breeds website</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="main-container">
+      <select name="dog-breeds" id="selector">
+        <option value="undefined">-- Select a breed --</option>
+        <option value="Akita">Akita</option>
+        <option value="Beagle">Beagle</option>
+        <option value="Dalmatian">Dalmatian</option>
+        <option value="German Shepherd">German Shepherd</option>
+        <option value="Husky">Husky</option>
+        <option value="Labrador">Labrador</option>
+        <option value="Pug">Pug</option>
+        <option value="Golden Retriever">Golden Retriever</option>
+        <option value="Cocker Spaniel">Cocker Spaniel</option>
+      </select>
+      <button class="search-btn">Search</button>
+    </div>
+    <div class="pic-container">
+      <img
+        src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80"
+        alt="dog"
+        class="dog-pic"
+      />
+      <p class="breed-name"></p>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>

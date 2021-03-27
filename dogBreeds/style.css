@@ -1,0 +1,53 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: #1f2833;
+}
+
+#selector {
+  padding: 8px;
+  border-radius: 4px;
+  width: 386px;
+  color: #1f2833;
+}
+
+.main-container {
+  margin: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-btn {
+  padding: 8px;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #fff;
+  color: #1f2833;
+  margin-left: 4px;
+  border-radius: 2px;
+}
+
+.search-btn:hover {
+  background: #1f2833;
+  color: #fff;
+  transition: 0.5s;
+}
+
+.pic-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.dog-pic {
+  width: 450px;
+  height: auto;
+  border-radius: 2px;
+  border: 1px solid #fff;
+}
+
+.breed-name {
+  font-size: 26px;
+  color: #fff;
+}
