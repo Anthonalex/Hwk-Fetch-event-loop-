@@ -8,14 +8,6 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
-// fetch("https://dog.ceo/api/breeds/list/all")
-//   .then((x) => {
-//     return x.json();
-//   })
-//   .then((x) => {
-//     console.log(x);
-//   });
-
 const getDogPicture = (breed, subBreed) => {
   let url = `https://dog.ceo/api/breed/${breed}`;
 
