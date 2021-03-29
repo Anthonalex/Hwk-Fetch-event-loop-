@@ -1,10 +1,18 @@
 .main-container,
-.search-info {
+.book-content {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  flex-basis: 100%;
+  border-bottom: 1px solid #000;
+}
+
+.search-info {
+  display: none;
+  right: 102px;
+  top: 62px;
+  position: fixed;
+  font-size: 24px;
 }
 
 .search-info {
