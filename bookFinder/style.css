@@ -76,10 +76,10 @@ body {
 
 .loader-div {
   position: fixed;
-  top: 78px;
-  right: 714px;
-  width: 319px;
-  height: 17px;
+  top: 13px;
+  left: 1%;
+  width: 355px;
+  height: -14px;
   background: rgb(27 26 31 / 48%);
   padding: 6px;
   font-size: 17px;
@@ -88,5 +88,5 @@ body {
 }
 
 .hide {
-  display: none;
+  /* display: none; */
 }
