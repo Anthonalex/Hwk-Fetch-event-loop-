@@ -1,8 +1,15 @@
-.main-container,
-.book-content {
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.main-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  flex-direction: column;
+}
+
+.book-content {
+  align-items: left;
   flex-direction: column;
   border-bottom: 1px solid #000;
 }
@@ -13,12 +20,17 @@
   top: 62px;
   position: fixed;
   font-size: 24px;
-}
-
-.search-info {
-  display: none;
+  background: rgba(46, 45, 45, 0.589);
+  color: #fff;
+  padding: 4px;
+  border-radius: 4px;
+  cursor: default;
 }
 
 .pagination-container {
   display: none;
+}
+
+.search-btn {
+  cursor: pointer;
 }

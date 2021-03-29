@@ -1,6 +1,13 @@
 const searchBtn = document.querySelector(".search-btn");
 const searchInfo = document.querySelector(".search-info");
 const searchInput = document.querySelector(".search-input");
+const list = document.querySelector(".content-list");
+
+const searchState = {
+  value: "",
+  pageCount: 0,
+  currentPage: 1,
+};
 
 function liBuilder(title, authorName, firstPublishYear, subjects) {
   const titleElem = document.createElement("p");
@@ -10,50 +17,70 @@ function liBuilder(title, authorName, firstPublishYear, subjects) {
   const div = document.createElement("div");
   const li = document.createElement("li");
 
-  div.setAttribute("class", "book-content");
-  if (authorName !== undefined && subjects !== undefined) {
-    console.log(
-      title,
-      authorName[0],
-      firstPublishYear,
-      subjects.splice(0, 5).join(" ,")
-    );
+  if (
+    authorName !== undefined &&
+    subjects !== undefined &&
+    firstPublishYear !== undefined
+  ) {
+    div.classList.add("book-content");
+    titleElem.innerHTML = `<b>Title:</b>  ${title}`;
+    authorNameElem.innerHTML = `<b>Author Name:</b>  ${authorName}`;
+    firstPublishYearElem.innerHTML = `<b>Publish Year:</b>  ${firstPublishYear[0]}`;
+    subjectElems.innerHTML = `<b>Subjects:</b>  ${subjects
+      .splice(0, 5)
+      .join(" ,")}`;
+
+    div.append(titleElem, authorNameElem, firstPublishYearElem, subjectElems);
+    li.append(div);
+
+    return li;
   }
 }
 
-function getBooks(bookName) {
-  let url = "http://openlibrary.org/search.json";
+function getBooks() {
+  let url = "http://openlibrary.org/search.json?q=";
 
-  if (Boolean(bookName)) {
-    if (bookName.split(" ").length === 1) {
-      url += `?q=${bookName}`;
+  if (Boolean(searchState.value)) {
+    if (searchState.value.split(" ").length === 1) {
+      url += `${searchState.value}&page=${searchState.currentPage}`;
     } else {
-      url += "?q=";
-      url += bookName.split(" ").reduce((acc, el) => {
+      let joinedStrs = searchState.value.split(" ").reduce((acc, el) => {
         return acc + `+${el}`;
       });
+
+      url += `${joinedStrs}&page=${searchState.currentPage}`;
     }
-    console.log(url);
     fetch(url)
       .then((res) => {
         return res.json();
       })
       .then((books) => {
         searchInfo.style.display = "block";
-        searchInfo.textContent += `${books.numFound} hits`;
+        searchInfo.textContent = `${books.numFound} hits`;
 
-        let booksArr = books.docs;
+        books.docs.forEach((el) => {
+          let content = liBuilder(
+            el.title,
+            el.author_name,
+            el.publish_year,
+            el.subject
+          );
 
-        booksArr.forEach((el) => {
-          liBuilder(el.title, el.author_name, el.publish_year[0], el.subject);
+          if (content !== undefined) {
+            list.append(content);
+          }
         });
-        console.log(books);
+      })
+      .catch((error) => {
+        alert(`${error}`);
       });
   }
 }
 
 searchBtn.addEventListener("click", () => {
-  let bookName = searchInput.value.trim();
+  searchState.value = searchInput.value.trim();
+  list.innerHTML = "";
+  searchInfo.textContent = "Loading...";
 
-  getBooks(bookName);
+  getBooks();
 });
