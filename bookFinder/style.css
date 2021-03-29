@@ -2,31 +2,23 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.colored {
+  color: crimson;
+}
+
 .search-btn {
   cursor: pointer;
-  padding: 4px;
+  padding: 8px;
+  background: rgb(27 26 31 / 48%);
+  border: 1px solid #000;
+  color: #fff;
+  border-radius: 4px;
 }
 .search-input {
   width: 480px;
   padding: 4px;
-}
-
-@media only screen and (max-width: 600px) {
-  .search-input {
-    width: 250px;
-  }
-}
-
-.main-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.book-content {
-  align-items: left;
-  flex-direction: column;
-  border-bottom: 1px solid #000;
+  margin-top: 34px;
+  font-size: 18px;
 }
 
 .search-info {
@@ -40,6 +32,29 @@ body {
   padding: 4px;
   border-radius: 4px;
   cursor: default;
+}
+
+@media only screen and (max-width: 600px) {
+  .search-input {
+    width: 250px;
+  }
+
+  .search-info {
+    right: 5%;
+    top: 90%;
+  }
+}
+
+.main-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.book-content {
+  align-items: left;
+  flex-direction: column;
+  border-bottom: 1px solid #000;
 }
 
 .pagination-container {
@@ -61,11 +76,11 @@ body {
 
 .loader-div {
   position: fixed;
-  top: 36px;
-  right: 717px;
+  top: 78px;
+  right: 714px;
   width: 319px;
   height: 17px;
-  background: red;
+  background: rgb(27 26 31 / 48%);
   padding: 6px;
   font-size: 17px;
   color: #fff;

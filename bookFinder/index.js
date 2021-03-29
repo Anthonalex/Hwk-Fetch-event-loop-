@@ -25,10 +25,10 @@ function liBuilder(title, authorName, firstPublishYear, subjects) {
     firstPublishYear !== undefined
   ) {
     div.classList.add("book-content");
-    titleElem.innerHTML = `<b>Title:</b>  ${title}`;
-    authorNameElem.innerHTML = `<b>Author Name:</b>  ${authorName}`;
-    firstPublishYearElem.innerHTML = `<b>Publish Year:</b>  ${firstPublishYear[0]}`;
-    subjectElems.innerHTML = `<b>Subjects:</b>  ${subjects
+    titleElem.innerHTML = `<b class='colored'>Title:</b>  ${title}`;
+    authorNameElem.innerHTML = `<b class='colored'>Author Name:</b>  ${authorName}`;
+    firstPublishYearElem.innerHTML = `<b class='colored'>Publish Year:</b>  ${firstPublishYear[0]}`;
+    subjectElems.innerHTML = `<b class='colored'>Subjects:</b>  ${subjects
       .splice(0, 5)
       .join(" ,")}`;
 
@@ -111,6 +111,7 @@ function getBooks() {
           paginationMaker();
         } else {
           loadingDiv.classList.add("hide");
+          searchInfo.textContent = "not found.";
           alert("nothing found,type a correct name");
         }
       })
