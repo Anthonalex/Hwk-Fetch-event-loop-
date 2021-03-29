@@ -1,0 +1,16 @@
+.main-container,
+.search-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-basis: 100%;
+}
+
+.search-info {
+  display: none;
+}
+
+.pagination-container {
+  display: none;
+}
