@@ -2,6 +2,8 @@ const searchBtn = document.querySelector(".search-btn");
 const searchInfo = document.querySelector(".search-info");
 const searchInput = document.querySelector(".search-input");
 const list = document.querySelector(".content-list");
+const paginationContainer = document.querySelector(".pagination-container");
+const loadingDiv = document.querySelector(".loader-div");
 
 const searchState = {
   value: "",
@@ -37,6 +39,38 @@ function liBuilder(title, authorName, firstPublishYear, subjects) {
   }
 }
 
+function paginationMaker() {
+  paginationContainer.innerHTML = "";
+  paginationContainer.style.display = "flex";
+
+  for (let i = 1; i <= searchState.pageCount; i += 1) {
+    const span = document.createElement("span");
+    span.textContent = i;
+    span.classList.add("page-count");
+
+    if (searchState.currentPage === i) {
+      span.classList.add("active-page");
+    }
+
+    span.addEventListener("click", () => {
+      searchState.currentPage = i;
+      updateInfo();
+      getBooks();
+    });
+
+    paginationContainer.append(span);
+  }
+}
+
+function updateInfo() {
+  if (searchState.value !== "") {
+    list.innerHTML = "";
+    paginationContainer.innerHTML = "";
+    searchInfo.textContent = "Loading...";
+    loadingDiv.classList.remove("hide");
+  }
+}
+
 function getBooks() {
   let url = "http://openlibrary.org/search.json?q=";
 
@@ -55,21 +89,30 @@ function getBooks() {
         return res.json();
       })
       .then((books) => {
-        searchInfo.style.display = "block";
-        searchInfo.textContent = `${books.numFound} hits`;
+        console.log(books.numFound);
+        if (books.numFound !== 0) {
+          loadingDiv.classList.add("hide");
+          searchInfo.style.display = "block";
+          searchInfo.textContent = `page: ${searchState.currentPage}`;
+          searchState.pageCount = Math.ceil(books.numFound / 100);
 
-        books.docs.forEach((el) => {
-          let content = liBuilder(
-            el.title,
-            el.author_name,
-            el.publish_year,
-            el.subject
-          );
+          books.docs.forEach((el) => {
+            let content = liBuilder(
+              el.title,
+              el.author_name,
+              el.publish_year,
+              el.subject
+            );
 
-          if (content !== undefined) {
-            list.append(content);
-          }
-        });
+            if (content !== undefined) {
+              list.append(content);
+            }
+          });
+          paginationMaker();
+        } else {
+          loadingDiv.classList.add("hide");
+          alert("nothing found,type a correct name");
+        }
       })
       .catch((error) => {
         alert(`${error}`);
@@ -79,8 +122,7 @@ function getBooks() {
 
 searchBtn.addEventListener("click", () => {
   searchState.value = searchInput.value.trim();
-  list.innerHTML = "";
-  searchInfo.textContent = "Loading...";
 
+  updateInfo();
   getBooks();
 });
