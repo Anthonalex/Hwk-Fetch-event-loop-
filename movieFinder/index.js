@@ -11,6 +11,11 @@ const searchState = {
   releaseDate: "",
 };
 
+function boxConstructor() {
+  const titleSpan = document.createElement('span')
+  const titleInfo = document.createElement('p')
+}
+
 function getMovie(data) {
   data.forEach((el) => {
     if (searchState.value === el.title) {
@@ -19,9 +24,9 @@ function getMovie(data) {
       searchState.director = el.director;
       searchState.producer = el.producer;
       searchState.releaseDate = el.release_date;
-      console.log(searchState);
     }
   });
+  boxConstructor();
 }
 
 function renderMovie() {
@@ -33,6 +38,9 @@ function renderMovie() {
     })
     .then((movies) => {
       getMovie(movies);
+    })
+    .catch((error) => {
+      alert(`${error}`);
     });
 }
 

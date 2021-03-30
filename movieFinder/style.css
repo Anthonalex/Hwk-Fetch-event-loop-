@@ -9,7 +9,8 @@ body {
 }
 
 .search-input {
-  width: 30%;
+  width: 420px;
+  min-width: 220px;
   padding: 8px;
   font-size: 18px;
   margin-right: 4px;
@@ -28,4 +29,41 @@ body {
   background: #000;
   color: #fff;
   transition: 0.5s;
+}
+
+.movie-box-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 26px;
+  height: 70vh;
+}
+
+.movie-box {
+  margin: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid rgba(66, 66, 66, 0.479);
+  border-radius: 4%;
+  padding: 12px;
+  /* width: 500px; */
+}
+
+.movie-infos {
+  width: 80%;
+  max-width: 400px;
+  margin: 6px 6px;
+  padding: 6px;
+}
+
+.shrink {
+  flex-shrink: 0;
+}
+
+.data-span {
+  padding: 4px;
+  background: rgba(66, 66, 66, 0.144);
+  border-radius: 4px;
 }
