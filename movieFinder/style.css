@@ -53,6 +53,7 @@ body {
   border-radius: 4%;
   padding: 12px;
   width: 500px;
+  background: rgb(248, 246, 246);
 }
 
 .movie-infos {
