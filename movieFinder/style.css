@@ -54,8 +54,13 @@ body {
   padding: 12px;
   width: 500px;
   background: rgb(248, 246, 246);
-  max-height: 70%;
-  overflow: scroll;
+}
+
+@media only screen and (max-width: 600px) {
+  .movie-box {
+    max-height: 70%;
+    overflow: scroll;
+  }
 }
 
 .movie-infos {
