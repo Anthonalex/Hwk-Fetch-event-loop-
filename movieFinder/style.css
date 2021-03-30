@@ -32,11 +32,15 @@ body {
 }
 
 .movie-box-container {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   margin: 26px;
   height: 70vh;
+}
+
+.active {
+  display: flex;
 }
 
 .movie-box {
@@ -48,7 +52,7 @@ body {
   border: 1px solid rgba(66, 66, 66, 0.479);
   border-radius: 4%;
   padding: 12px;
-  /* width: 500px; */
+  width: 500px;
 }
 
 .movie-infos {
@@ -62,8 +66,14 @@ body {
   flex-shrink: 0;
 }
 
-.data-span {
+.data-p {
+  display: inline-flex;
   padding: 4px;
-  background: rgba(66, 66, 66, 0.144);
+  background: rgba(66, 66, 66, 0.781);
+  color: #fff;
   border-radius: 4px;
+  word-break: break-word;
+  text-align: justify;
+  text-align-last: left;
+  font-size: 14px;
 }

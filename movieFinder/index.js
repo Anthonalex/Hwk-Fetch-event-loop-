@@ -1,6 +1,11 @@
 const searchBtn = document.querySelector(".search-btn");
 const input = document.querySelector(".search-input");
 const movieBox = document.querySelector(".movie-box-container");
+const titleParagraph = document.querySelector(".title-p");
+const descParagraph = document.querySelector(".desc-paragraph");
+const directorParagraph = document.querySelector(".director-p");
+const producerParagraph = document.querySelector(".producer-p");
+const releaseDateParagraph = document.querySelector(".releaseDate-p");
 
 const searchState = {
   value: "",
@@ -11,9 +16,12 @@ const searchState = {
   releaseDate: "",
 };
 
-function boxConstructor() {
-  const titleSpan = document.createElement('span')
-  const titleInfo = document.createElement('p')
+function boxUpdateInfo() {
+  titleParagraph.textContent = searchState.title;
+  descParagraph.textContent = searchState.description;
+  directorParagraph.textContent = searchState.director;
+  producerParagraph.textContent = searchState.producer;
+  releaseDateParagraph.textContent = searchState.releaseDate;
 }
 
 function getMovie(data) {
@@ -26,7 +34,7 @@ function getMovie(data) {
       searchState.releaseDate = el.release_date;
     }
   });
-  boxConstructor();
+  boxUpdateInfo();
 }
 
 function renderMovie() {
@@ -38,6 +46,7 @@ function renderMovie() {
     })
     .then((movies) => {
       getMovie(movies);
+      movieBox.classList.add("active");
     })
     .catch((error) => {
       alert(`${error}`);
