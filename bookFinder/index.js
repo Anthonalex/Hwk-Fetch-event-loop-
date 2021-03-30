@@ -89,7 +89,6 @@ function getBooks() {
         return res.json();
       })
       .then((books) => {
-        console.log(books.numFound);
         if (books.numFound !== 0) {
           loadingDiv.classList.add("hide");
           searchInfo.style.display = "block";
