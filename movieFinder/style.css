@@ -54,6 +54,8 @@ body {
   padding: 12px;
   width: 500px;
   background: rgb(248, 246, 246);
+  max-height: 70%;
+  overflow: scroll;
 }
 
 .movie-infos {
